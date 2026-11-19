@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Converse com a Luna, revise os dados propostos e atualize seu painel financeiro local.">
+  <title>Resultados da conversa | Luna</title>
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <script src="../assets/js/site.js" defer></script>
+  <script src="../assets/js/ai-demo.js" defer></script>
+</head>
+<body data-root="../" data-page="app" class="is-loading">
+  <div class="skeleton-overlay">
+    <div class="skeleton-loader">
+      <div class="skeleton-text-block">
+        <div class="skeleton-row title"></div>
+        <div class="skeleton-row subtitle"></div>
+        <div class="skeleton-row long"></div>
+        <div class="skeleton-row medium"></div>
+      </div>
+      <div class="skeleton-grid skeleton-grid-2">
+        <div class="skeleton-card">
+          <div class="skeleton-img medium-img"></div>
+          <div class="skeleton-row short"></div>
+          <div class="skeleton-row medium"></div>
+        </div>
+        <div class="skeleton-card">
+          <div class="skeleton-img medium-img"></div>
+          <div class="skeleton-row short"></div>
+          <div class="skeleton-row medium"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <header id="site-header"></header>
+  <main>
+    <section class="page-intro page-width finance-intro">
+      <p class="eyebrow">Aplicativo da Luna · Protótipo local</p>
+      <h1>Da conversa<br><em>a um plano claro.</em></h1>
+      <p>Converse com a Luna para organizar informações no painel. Os gráficos começam vazios e se atualizam com os dados confirmados da conversa.</p>
+    </section>
+
+    <section class="finance-dashboard page-width" aria-label="Painel financeiro local">
+      <div class="finance-demo-banner">
+        <span class="finance-demo-pulse" aria-hidden="true"></span>
+        <p><strong>Painel financeiro local</strong><span>Organize renda, despesas, contas e objetivos a partir da conversa.</span></p>
+      </div>
+
+      <div class="finance-metrics" aria-label="Resumo dos dados confirmados">
+        <article class="finance-metric"><span>RENDA MENSAL</span><strong id="metric-income">—</strong><small id="metric-income-note">Ainda não informada</small></article>
+        <article class="finance-metric"><span>CONTAS MENSAIS</span><strong id="metric-bills">—</strong><small id="metric-bills-note">Ainda não informadas</small></article>
+        <article class="finance-metric"><span>DESPESAS ESSENCIAIS</span><strong id="metric-essential">—</strong><small id="metric-essential-note">Ainda não informadas</small></article>
+        <article class="finance-metric finance-metric-highlight"><span>OBJETIVOS</span><strong id="metric-goals">0</strong><small id="metric-goals-note">Nenhum objetivo registrado</small></article>
+      </div>
+
+      <div class="finance-charts">
+        <article class="finance-card finance-breakdown">
+          <div class="finance-card-heading">
+            <div><p class="eyebrow">01 / VISÃO DO MÊS</p><h3>Seis formas de entender seus números</h3></div>
+            <label class="finance-currency-filter" for="finance-currency-select">Moeda exibida<select id="finance-currency-select" aria-label="Moeda dos gráficos"></select></label>
+          </div>
+          <div class="finance-chart-gallery">
+            <section class="finance-mini-chart" aria-labelledby="finance-comparison-title">
+              <p class="eyebrow">01 / ENTRADAS E SAÍDAS</p>
+              <h4 id="finance-comparison-title">O que entra e o que já está comprometido?</h4>
+              <div class="finance-comparison-chart" id="finance-comparison-chart" aria-label="Ainda não há valores mensais para comparar">
+                <div class="finance-comparison-row">
+                  <div><span>Renda informada</span><strong id="finance-comparison-income">—</strong></div>
+                  <div class="finance-comparison-track"><i id="finance-comparison-income-bar"></i></div>
+                </div>
+                <div class="finance-comparison-row">
+                  <div><span>Contas e essenciais</span><strong id="finance-comparison-outgoings">—</strong></div>
+                  <div class="finance-comparison-track"><i id="finance-comparison-outgoings-bar"></i></div>
+                </div>
+              </div>
+              <p class="finance-mini-note" id="finance-comparison-note">Informe renda e despesas mensais na mesma moeda para comparar.</p>
+            </section>
+
+            <section class="finance-mini-chart" aria-labelledby="finance-breakdown-title">
+              <p class="eyebrow">02 / CADA GASTO</p>
+              <h4 id="finance-breakdown-title">Como cada gasto participa do total?</h4>
+              <div class="finance-donut-layout">
+                <div class="finance-donut" id="finance-donut" aria-label="Ainda não há gastos com valor confirmado"><div><strong id="donut-total">—</strong><span id="donut-caption">SEM VALORES</span></div></div>
+                <ul class="finance-legend" id="finance-category-summary"><li class="finance-empty">Cada gasto aparecerá individualmente aqui.</li></ul>
+              </div>
+              <p class="finance-mini-note">Cada gasto mensal ou pontual aparece com sua categoria, frequência, valor e participação no total.</p>
+            </section>
+
+            <section class="finance-mini-chart" aria-labelledby="finance-accounts-title">
+              <p class="eyebrow">03 / TODOS OS GASTOS</p>
+              <h4 id="finance-accounts-title">Onde cada gasto está indo?</h4>
+              <div class="finance-accounts-chart" id="finance-category-chart" aria-label="Ainda não há gastos com valor confirmado">
+                <div class="finance-accounts-bars" id="finance-chart-bars"><span class="finance-empty">Informe seus gastos para ver todos no gráfico de barras.</span></div>
+              </div>
+              <p class="finance-mini-note" id="finance-accounts-note">Gastos mensais e pontuais na moeda selecionada.</p>
+            </section>
+
+            <section class="finance-mini-chart" aria-labelledby="finance-income-title">
+              <p class="eyebrow">04 / TODAS AS RENDAS</p>
+              <h4 id="finance-income-title">De onde vem cada renda?</h4>
+              <div class="finance-accounts-chart" id="finance-income-chart" aria-label="Ainda não há rendas com valor confirmado">
+                <div class="finance-accounts-bars" id="finance-income-bars"><span class="finance-empty">Informe suas rendas para ver todas no gráfico de barras.</span></div>
+              </div>
+              <p class="finance-mini-note" id="finance-income-note">Rendas mensais e pontuais na moeda selecionada.</p>
+            </section>
+
+            <section class="finance-mini-chart" aria-labelledby="finance-essential-title">
+              <p class="eyebrow">05 / DESPESAS ESSENCIAIS</p>
+              <h4 id="finance-essential-title">O que foi marcado como essencial?</h4>
+              <div class="finance-accounts-chart" id="finance-essential-chart" aria-label="Ainda não há despesas essenciais com valor confirmado">
+                <div class="finance-accounts-bars" id="finance-essential-bars"><span class="finance-empty">Converse com a Luna para identificar despesas essenciais.</span></div>
+              </div>
+              <p class="finance-mini-note" id="finance-essential-note">Todos os itens classificados como essenciais, na moeda selecionada.</p>
+            </section>
+
+            <section class="finance-mini-chart" aria-labelledby="finance-commitment-title">
+              <p class="eyebrow">06 / COMPROMISSO MENSAL</p>
+              <h4 id="finance-commitment-title">Quanto da renda recorrente já tem destino?</h4>
+              <div class="finance-commitment-gauge" id="finance-commitment-gauge" role="img" aria-label="Informe renda mensal e despesas mensais para calcular o comprometimento da renda">
+                <svg viewBox="0 0 240 150" aria-hidden="true" focusable="false">
+                  <path class="finance-gauge-track" d="M 24 120 A 96 96 0 0 1 216 120" pathLength="100"></path>
+                  <path class="finance-gauge-value" id="finance-commitment-arc" d="M 24 120 A 96 96 0 0 1 216 120" pathLength="100"></path>
+                </svg>
+                <div class="finance-gauge-reading">
+                  <strong id="finance-commitment-percent">—</strong>
+                  <span id="finance-commitment-caption">AGUARDANDO DADOS</span>
+                </div>
+              </div>
+              <div class="finance-gauge-scale" aria-hidden="true"><span>0%</span><span>100%+</span></div>
+              <p class="finance-mini-note" id="finance-commitment-note">Informe renda e despesas mensais na mesma moeda.</p>
+            </section>
+          </div>
+          <p class="finance-chart-caption">Cada gráfico responde a uma pergunta diferente. Os valores são comparados somente dentro da moeda selecionada; não há conversão automática.</p>
+        </article>
+
+        <article class="finance-card finance-attention">
+          <div class="finance-card-heading"><div><p class="eyebrow">02 / RESUMO</p><h3>O que a conversa identificou?</h3></div><span class="finance-chart-type">ITENS CONFIRMADOS</span></div>
+          <div class="finance-attention-list" id="finance-insights-list"><p class="finance-empty">Os pontos para avaliar aparecerão conforme a conversa.</p></div>
+          <h4 class="finance-list-subheading">Itens confirmados</h4>
+          <div class="finance-attention-list" id="finance-items-list"><p class="finance-empty">Seu painel está vazio. Conte à Luna o que gostaria de organizar.</p></div>
+          <p class="finance-chart-caption">Peça para adicionar, editar ou remover itens. Autorize cada mudança no chat ou ative Controle total.</p>
+        </article>
+
+        <article class="finance-card finance-next-steps">
+          <div class="finance-card-heading"><div><p class="eyebrow">04 / PRÓXIMOS PASSOS</p><h3>Uma coisa de cada vez.</h3></div><span class="finance-chart-type">SUGESTÕES DA LUNA</span></div>
+          <ol class="finance-step-list" id="finance-step-list">
+            <li class="finance-empty">As sugestões práticas aparecerão conforme a conversa.</li>
+          </ol>
+          <p class="finance-chart-caption">As respostas ajudam a Luna a fazer perguntas melhores e adaptar os próximos passos ao longo da conversa.</p>
+          <form class="finance-guidance-form" id="finance-guidance-form">
+            <p class="finance-guidance-title">Perguntas da Luna</p>
+            <p class="finance-guidance-intro">As perguntas mudam conforme a conversa e o que você já contou.</p>
+            <div class="finance-guidance-questions" id="finance-guidance-questions" aria-live="polite">
+              <p class="finance-empty">Converse com a Luna para receber perguntas feitas para sua situação.</p>
+            </div>
+            <div class="finance-guidance-actions">
+              <button class="button button-dark" type="submit">Salvar respostas</button>
+              <span id="finance-guidance-status" role="status">As respostas ficam neste navegador.</span>
+            </div>
+          </form>
+          <section class="finance-calculator" aria-labelledby="finance-calculator-title">
+            <div class="finance-calculator-heading">
+              <div>
+                <p class="eyebrow">FERRAMENTA RÁPIDA</p>
+                <h4 id="finance-calculator-title">Calculadora científica</h4>
+              </div>
+              <button class="finance-calculator-mode" id="finance-calculator-mode" type="button" aria-pressed="false">DEG</button>
+            </div>
+            <label class="finance-calculator-label" for="finance-calculator-display">Expressão</label>
+            <input class="finance-calculator-display" id="finance-calculator-display" type="text" inputmode="none" autocomplete="off" spellcheck="false" placeholder="Ex.: (320 + 430) ÷ 2" aria-describedby="finance-calculator-result">
+            <p class="finance-calculator-result" id="finance-calculator-result" role="status" aria-live="polite">Digite uma expressão ou use os botões.</p>
+            <div class="finance-calculator-keys" id="finance-calculator-keys" role="group" aria-label="Teclas da calculadora científica">
+              <button type="button" data-value="sin(">sin</button>
+              <button type="button" data-value="cos(">cos</button>
+              <button type="button" data-value="tan(">tan</button>
+              <button type="button" data-value="sqrt(">√</button>
+              <button type="button" data-value="^2">x²</button>
+              <button type="button" data-value="log(">log</button>
+              <button type="button" data-value="ln(">ln</button>
+              <button type="button" data-value="^">xʸ</button>
+              <button type="button" data-value="pi">π</button>
+              <button type="button" data-value="e">e</button>
+              <button type="button" data-value="(">(</button>
+              <button type="button" data-value=")">)</button>
+              <button type="button" data-value="7">7</button>
+              <button type="button" data-value="8">8</button>
+              <button type="button" data-value="9">9</button>
+              <button type="button" data-value="/">÷</button>
+              <button type="button" data-action="clear">AC</button>
+              <button type="button" data-value="4">4</button>
+              <button type="button" data-value="5">5</button>
+              <button type="button" data-value="6">6</button>
+              <button type="button" data-value="*">×</button>
+              <button type="button" data-action="delete">⌫</button>
+              <button type="button" data-value="1">1</button>
+              <button type="button" data-value="2">2</button>
+              <button type="button" data-value="3">3</button>
+              <button type="button" data-value="-">−</button>
+              <button type="button" data-value="%">%</button>
+              <button type="button" data-value="0">0</button>
+              <button type="button" data-value=".">.</button>
+              <button type="button" data-value="00">00</button>
+              <button type="button" data-value="+">+</button>
+              <button type="button" data-action="calculate">=</button>
+            </div>
+          </section>
+        </article>
+      </div>
+
+      <section class="finance-followup" aria-labelledby="finance-followup-title">
+        <div class="finance-followup-copy">
+          <p class="eyebrow">05 / CONTINUAR A CONVERSA</p>
+          <h3 id="finance-followup-title">Converse com a Luna sobre sua situação.</h3>
+          <p>Descreva o que deseja organizar. A Luna pode sugerir itens para o painel e apresentar as alterações no chat.</p>
+        </div>
+        <div class="panel chat-panel finance-chat-panel">
+          <div class="conversation" id="conversation" aria-live="polite"><div class="message assistant">Oi! Sou a Luna, sua assistente de organização financeira do dia a dia. Posso explicar o exemplo ou ajudar você a organizar uma dúvida. Por onde gostaria de começar?</div></div>
+          <div class="chat-controls">
+            <button class="chat-control-button" id="clear-dashboard" type="button">Apagar dados</button>
+            <button class="chat-control-button" id="ai-control-toggle" type="button" aria-pressed="false">Controle total</button>
+          </div>
+          <div class="chat-composer">
+            <div class="suggestions" aria-label="Sugestões para conversar com a Luna"><button class="suggestion" type="button">Me ajude a organizar contas e despesas</button><button class="suggestion" type="button">Quais informações posso colocar no painel?</button><button class="suggestion" type="button">Como planejar um objetivo de compra?</button></div>
+            <form id="chat-form"><div class="field"><label for="prompt">Pergunte à Luna</label><textarea id="prompt" maxlength="600" required placeholder="Ex.: tenho contas para pagar e quero planejar a compra de um sapato." rows="2"></textarea></div><div class="button-row"><button class="button button-dark" type="submit">Enviar</button><button class="button button-light" type="button" id="clear-chat">Limpar conversa</button></div><p class="form-message" id="chat-status" role="status"></p></form>
+          </div>
+        </div>
+      </section>
+      <a class="finance-privacy-link" href="privacidade.html">
+        <span class="finance-privacy-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M12 3.5 19 6v5.2c0 4.4-2.8 7.6-7 9.3-4.2-1.7-7-4.9-7-9.3V6l7-2.5Z" />
+            <path d="m9.2 12.1 1.8 1.8 3.9-4" />
+          </svg>
+        </span>
+        <span class="finance-privacy-copy">
+          <strong>Privacidade</strong>
+          <span>Saiba como seus dados são usados neste protótipo.</span>
+        </span>
+        <span class="finance-privacy-arrow" aria-hidden="true">↗</span>
+      </a>
+    </section>
+  </main>
+  <footer id="site-footer"></footer>
+</body>
+</html>

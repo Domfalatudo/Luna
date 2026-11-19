@@ -1,0 +1,13 @@
+{
+  "name": "luna-financial-support",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site demonstrativo da Luna com backend Node.js para serviços de IA",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  }
+}

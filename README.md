@@ -114,3 +114,4 @@ Implemente um transporte real apenas após esses dados serem conhecidos e testad
 - O visualizador é uma projeção geométrica demonstrativa em Canvas, não carrega GLB/glTF.
 - A página `404.html` está disponível como arquivo, mas sua configuração como erro padrão depende do servidor de hospedagem.
 - Revise a política de privacidade antes de alterar o processamento de dados, adicionar telemetria ou armazenamento.
+
